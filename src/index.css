@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Enhanced Civil website color scheme - Orange, Black, Grey, White */
+    --background: 0 0% 98%; /* off-white for better contrast */
+    --foreground: 0 0% 5%; /* deep black */
+
+    --card: 0 0% 100%; /* pure white */
+    --card-foreground: 0 0% 5%; /* deep black */
+
+    --popover: 0 0% 100%; /* pure white */
+    --popover-foreground: 0 0% 5%; /* deep black */
+
+    --primary: 24 100% 60%; /* vibrant orange (#FF7A00) */
+    --primary-foreground: 0 0% 100%; /* white */
+
+    --secondary: 0 0% 45%; /* medium grey (#737373) */
+    --secondary-foreground: 0 0% 100%; /* white */
+
+    --muted: 0 0% 92%; /* light grey background */
+    --muted-foreground: 0 0% 25%; /* dark grey text */
+
+    --accent: 30 100% 55%; /* slightly different orange for accents */
+    --accent-foreground: 0 0% 100%; /* white */
+
+    --destructive: 0 84% 60%; /* red for errors */
+    --destructive-foreground: 0 0% 100%; /* white */
+
+    --border: 0 0% 88%; /* light grey borders */
+    --input: 0 0% 96%; /* very light grey input backgrounds */
+    --ring: 24 100% 60%; /* orange focus ring */
+
+    /* Civil website specific tokens */
+    --header-bg: 0 0% 100%; /* white header */
+    --header-foreground: 0 0% 5%; /* black text */
+    --nav-bg: 0 0% 100%; /* white nav */
+    --nav-foreground: 0 0% 5%; /* black nav text */
+    --nav-hover: 24 100% 60%; /* orange hover */
+    --footer-bg: 0 0% 8%; /* dark charcoal footer */
+    --footer-foreground: 0 0% 95%; /* off-white footer text */
+    
+    /* Dashboard specific tokens */
+    --dashboard-bg: 0 0% 96%; /* light grey dashboard background */
+    --dashboard-card: 0 0% 100%; /* white cards */
+    --dashboard-border: 0 0% 90%; /* subtle borders */
+    
+    /* Animation tokens */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --shadow-widget: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px 0 rgb(0 0 0 / 0.1);
+    --shadow-hover: 0 4px 12px 0 rgb(0 0 0 / 0.1), 0 2px 4px 0 rgb(0 0 0 / 0.1);
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* In dark mode, we'll keep the same color scheme but adjust some values */
+    --background: 0 0% 10%; /* dark grey */
+    --foreground: 0 0% 100%; /* white */
+
+    --card: 0 0% 15%; /* darker grey */
+    --card-foreground: 0 0% 100%; /* white */
+
+    --popover: 0 0% 15%; /* darker grey */
+    --popover-foreground: 0 0% 100%; /* white */
+
+    --primary: 39 100% 50%; /* orange (#FFA500) */
+    --primary-foreground: 0 0% 100%; /* white */
+
+    --secondary: 0 0% 50%; /* grey (#808080) */
+    --secondary-foreground: 0 0% 100%; /* white */
+
+    --muted: 0 0% 25%; /* medium grey */
+    --muted-foreground: 0 0% 80%; /* light grey */
+
+    --accent: 39 100% 50%; /* orange (#FFA500) */
+    --accent-foreground: 0 0% 100%; /* white */
+
+    --destructive: 0 100% 50%; /* red */
+    --destructive-foreground: 0 0% 100%; /* white */
+
+    --border: 0 0% 30%; /* dark grey border */
+    --input: 0 0% 30%; /* dark grey input */
+    --ring: 39 100% 50%; /* orange ring (#FFA500) */
+
+    /* Civil website specific tokens */
+    --header-bg: 0 0% 15%; /* dark grey */
+    --header-foreground: 0 0% 100%; /* white */
+    --nav-bg: 0 0% 15%; /* dark grey */
+    --nav-foreground: 0 0% 100%; /* white */
+    --nav-hover: 39 100% 50%; /* orange */
+    --footer-bg: 0 0% 0%; /* black */
+    --footer-foreground: 0 0% 100%; /* white */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .civil-button {
+    @apply bg-primary text-primary-foreground rounded-lg px-6 py-3 font-semibold
+           transition-all duration-200 ease-in-out
+           hover:bg-primary/90 hover:shadow-lg hover:-translate-y-0.5
+           active:scale-95 active:transition-none
+           focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
+           border border-primary/20;
+  }
+  
+  .civil-button-secondary {
+    @apply bg-secondary text-secondary-foreground rounded-lg px-6 py-3 font-semibold
+           transition-all duration-200 ease-in-out
+           hover:bg-secondary/90 hover:shadow-lg hover:-translate-y-0.5
+           active:scale-95 active:transition-none
+           focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2
+           border border-secondary/20;
+  }
+  
+  .civil-card {
+    @apply bg-card rounded-xl p-6 shadow-sm border border-border/50
+           hover:shadow-md hover:border-border transition-all duration-300;
+  }
+  
+  .dashboard-card {
+    @apply bg-dashboard-card rounded-xl p-6 shadow-sm border border-dashboard-border
+           hover:shadow-md transition-all duration-200;
+  }
+  
+  .nav-item {
+    @apply flex items-center space-x-3 px-4 py-2 rounded-lg
+           text-nav-foreground hover:text-nav-hover hover:bg-muted/50
+           transition-all duration-200 cursor-pointer font-medium;
+  }
+  
+  .nav-item.active {
+    @apply bg-primary text-primary-foreground shadow-sm;
+  }
+
+  .stat-number {
+    @apply text-2xl font-bold text-primary;
+  }
+  
+  .section-header {
+    @apply text-3xl font-bold text-foreground mb-6;
+  }
+  
+  .section-subheader {
+    @apply text-xl font-semibold text-foreground mb-4;
+  }
+  
+  .civil-link {
+    @apply text-primary hover:text-primary/80 transition-colors duration-200 font-medium;
+  }
+  
+  .status-badge {
+    @apply px-3 py-1 text-sm font-medium rounded-full;
+  }
+  
+  .priority-badge {
+    @apply px-3 py-1 text-sm font-medium rounded-full;
+  }
+  
+  .dashboard-bg {
+    @apply bg-dashboard-bg;
+  }
+}
